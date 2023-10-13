@@ -31,14 +31,14 @@
               <div class="form-group">
                 <div class="col-md-8 col-xs-12">
                   <label for="inputRazaoSocial">Razão Social</label>
-                  <input required type="text" class="form-control" id="inputRazaoSocial" placeholder="Razão Social">
+                  <input  true type="text" class="form-control" id="inputRazaoSocial" placeholder="Razão Social">
                 </div>
               </div>
 
               <div class="form-group">
                 <div class="col-md-4 col-xs-12">
                   <label for="inputCnpj">CNPJ</label>
-                  <input required type="text" class="form-control" id="inputCnpj" placeholder="XX.XXX.XXX/YYYY-ZZ"
+                  <input  true type="text" class="form-control" id="inputCnpj" placeholder="XX.XXX.XXX/YYYY-ZZ"
                     minlength="14" maxlength="14">
                 </div>
               </div>
@@ -46,7 +46,7 @@
               <div class="form-group">
                 <div class="col-md-8 col-xs-12">
                   <label for="inputNomeFantasia"> Nome Fantasia</label>
-                  <input required type="text" class="form-control" id="inputNomeFantasia" placeholder="Nome Fantasia">
+                  <input  true type="text" class="form-control" id="inputNomeFantasia" placeholder="Nome Fantasia">
                 </div>
               </div>
 
@@ -61,10 +61,10 @@
                 <div class="col-md-6 col-xs-12">
                   <div class="input-group">
                     <label for="inputCEP">CEP</label>
-                    <input required type="text" class="form-control" id="inputCEP" placeholder="XX.XXX-XXX"
+                    <input  true type="text" class="form-control" id="inputCEP" placeholder="XX.XXX-XXX"
                       minlength="8" maxlength="8">
                     <span class="input-group-btn">
-                      <button class="btn btn-primary btn-success" type="button" id="buscaCEP">Go!</button>
+                      <button class="btn btn-success" type="button" id="buscaCEP">Buscar</button>
                     </span>
                   </div>
                 </div>
@@ -81,7 +81,7 @@
               <div class="form-group">
                 <div class="col-md-8 col-xs-12">
                   <label for="inputEndereco">Endereço</label>
-                  <input accept="false" disabled required type="text" class="form-control" id="inputEndereco"
+                  <input accept="false" disabled  true type="text" class="form-control" id="inputEndereco"
                     placeholder="Preenchido automaticamente pelo CEP">
                 </div>
               </div>
@@ -89,14 +89,14 @@
               <div class="form-group">
                 <div class="col-md-4 col-xs-12">
                   <label for="inputNumero">Número</label>
-                  <input required type="text" class="form-control" id="inputNumero" placeholder="Número do imóvel">
+                  <input  true type="text" class="form-control" id="inputNumero" placeholder="Número do imóvel">
                 </div>
               </div>
 
               <div class="form-group">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <label for="inputComplemento">Complemento</label>
-                  <input required type="text" class="form-control" id="inputComplemento"
+                  <input  true type="text" class="form-control" id="inputComplemento"
                     placeholder="Apartamento x, referência y...">
                 </div>
               </div>
@@ -125,7 +125,7 @@
               <div class="form-group">
                 <div class="col-md-6 col-xs-12">
                   <label for="inputNomeContato">Nome da pessoa de contato</label>
-                  <input required type="text" class="form-control" id="inputNomeContato"
+                  <input  true type="text" class="form-control" id="inputNomeContato"
                     placeholder="Insira o Nome Completo">
                 </div>
               </div>
@@ -144,20 +144,6 @@
                   <input type="email" class="form-control" id="inputEmail" placeholder="Email">
                 </div>
               </div>
-
-              <!-- 
-<div class="form-group">
-<label for="exampleInputFile">File input</label>
-<input type="file" id="exampleInputFile">
-<p class="help-block">Example block-level help text here.</p>
-</div>
-<div class="checkbox">
-<label>
-<input type="checkbox"> Check me out
-</label>
-</div>
-<button type="submit" class="btn btn-default">Submit</button>
--->
             </div>
           </div>
         </div>
@@ -168,72 +154,41 @@
             <h3 class="panel-title">Produtos</h3>
           </div>
           <div class="panel-body">
-            <div class="row">
+            <div class="form-group">
+              <label for="descricao">Descrição:</label>
+              <input type="text" class="form-control" id="descricao" name="descricao"  true>
+            </div>
 
-              <span id="tabela-produtos">
-                <div class="col-md-8">
-                  <label for="produto" class="col-sm-2 control-label">Produto - #</label>
-                  <input required type="text" class="form-control" id="produto">
-                </div>
-                
-                <div class="form-inline" role="form">
-                  <div class="form-group">
-                  <label class="sr-only" for="">unidade de medida</label>
-                  <label class="control-label" for="">UND. Medida</label>
-                  <select class="form-control" name="unidade_medida[]" required>
+            <span id="produtos">
+              <span id="produto">
+                <div class="form-group">
+                  <label for="unidade_medida">Unidade de Medida:</label>
+                  <select class="form-control" id="unidade_medida" name="unidade_medida"  true>
                     <option value="unidade">Unidade</option>
                     <option value="kg">Quilograma</option>
                     <option value="litro">Litro</option>
                   </select>
                 </div>
-                <div class="form-group ">
-                  <label class="sr-only" for="exampleInputEmail2">Valor total</label>
-                  <label class="control-label" for="exampleInputEmail2">Valor total</label>
-                  <input type="email" class="form-control" id="valorTotal">
-                </div>
+
                 <div class="form-group">
-                  <label class="sr-only" for="exampleInputEmail2">Valor total</label>
-                  <label class="control-label" for="exampleInputEmail2">Valor total</label>
-                  <input type="email" class="form-control" id="valorTotal">
+                  <label for="quantidade_estoque">Quantidade em Estoque:</label>
+                  <input type="number" class="form-control" id="quantidade_estoque" name="quantidade_estoque"  true>
                 </div>
+
                 <div class="form-group">
-                  <label class="sr-only" for="exampleInputEmail2">Valor total</label>
-                  <label class="control-label" for="exampleInputEmail2">Valor total</label>
-                  <input type="email" class="form-control" id="valorTotal">
+                  <label for="valor_unitario">Valor Unitário:</label>
+                  <input type="number" class="form-control" id="valor_unitario" name="valor_unitario"  true>
                 </div>
-              </div>
+
+                <div class="form-group">
+                  <label for="valor_total">Valor Total:</label>
+                  <input type="number" class="form-control" id="valor_total" name="valor_total" readonly>
+                </div>
+              </span>
             </span>
 
-              <table id="tabela-produtos">
-                <thead>
-                  <tr>
-                    <th>Descrição</th>
-                    <th>Unidade de Medida</th>
-                    <th>Quantidade em Estoque</th>
-                    <th>Valor Unitário</th>
-                    <th>Valor Total</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><input type="text" name="descricao[]" required></td>
-                    <td>
-                      <select name="unidade_medida[]" required>
-                        <option value="unidade">Unidade</option>
-                        <option value="kg">Quilograma</option>
-                        <option value="litro">Litro</option>
-                      </select>
-                    </td>
-                    <td><input type="number" name="quantidade_estoque[]" required></td>
-                    <td><input type="number" name="valor_unitario[]" required></td>
-                    <td><input type="number" name="valor_total[]" readonly></td>
-                  </tr>
-                </tbody>
-              </table>
-              <button id="adicionar-produto">Adicionar Produto</button>
+            <button id="adicionar-produto" class="btn btn-primary" data-load-file="produtos.html">Adicionar Produto</button>
 
-
-            </div>
           </div>
         </div>
       </div>
@@ -245,6 +200,11 @@
           </div>
           <div class="panel-body">
             <div class="row">
+              <div class="form-group">
+                
+                <input type="file">
+              </div>
+              
 
             </div>
           </div>
@@ -259,14 +219,29 @@
     </form>
   </div>
 
-  <script>
-    $("#adicionar-produto").click(function () {
-      // Clona a última linha da tabela e limpa os campos
-      var novaLinha = $("#tabela-produtos").clone();
-      novaLinha.find("input").val(""); // Limpa os campos
-      $("#tabela-produtos").append(novaLinha); // Adiciona a nova linha à tabela
-    });
 
+<script>
+  $(document).ready(function() {
+    var produto = 0;
+    $("#adicionar-produto").click(function() {
+      var fileToLoad = $(this).data('load-file');
+      produto = produto + 1;
+      // Use o método .load() para carregar o conteúdo do arquivo
+      $("#produto").load(fileToLoad, function() {
+        // Clone a seção de produtos
+        var novaSecaoProduto = $("#produto").clone();
+  
+        // Limpe os campos clonados
+        novaSecaoProduto.find('input[type="text"]').val('');
+        novaSecaoProduto.find('select').val('');
+        novaSecaoProduto.find('input[type="number"]').val('');
+        novaSecaoProduto.find('id="produto"').val('id=produto' + produto);
+  
+        // Adicione a nova seção de produto à seção com o ID "produtos"
+        $("#produtos").append(novaSecaoProduto);
+      });
+    });
+  });
   </script>
 
   <script>

@@ -13,7 +13,7 @@
   <script src="/portal/resources/js/mustache/mustache-min.js"></script>
   <script src="/style-guide/js/fluig-style-guide.min.js"></script>
   <script src="/portal/resources/js/jquery/jquery.js"></script>
-</head>
+  <script src="/js/main.js"></script>
 
 <body>
   <div class="fluig-style-guide">
@@ -26,7 +26,7 @@
           </div>
           <div class="panel-body">
             <div class="row">
-
+<!--
 
               <div class="form-group">
                 <div class="col-md-8 col-xs-12">
@@ -148,6 +148,7 @@
           </div>
         </div>
       </div>
+      -->
       <div class="table-datatable">
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -182,7 +183,6 @@
                   <label for="valor_unitario">Valor Unitário:</label>
                   <input type="number" class="form-control" id="valor_unitario" name="valor_unitario"   required>
                 </div>
-
                 <div class="form-group">
                   <label for="valor_total">Valor Total:</label>
                   <input type="number" class="form-control" id="valor_total" name="valor_total" readonly>
@@ -221,66 +221,31 @@
       </div>
     </form>
   </div>
-
-
-<script>
-  $(document).ready(function() {
-    let produto = 0;
-    $("#adicionar-produto").click(function() {
-      var fileToLoad = $(this).data('load-file');
-      produto = produto + 1;
-      // Use o método .load() para carregar o conteúdo do arquivo
-      $("#produto").load(fileToLoad, function() {
-        // Clone a seção de produtos
-        var novaSecaoProduto = $("#produto").clone();
-  
-        // Limpe os campos clonados
-        novaSecaoProduto.find('input[type="text"]').val('');
-        novaSecaoProduto.find('select').val('');
-        novaSecaoProduto.find('input[type="number"]').val('');
-        novaSecaoProduto.find('Produto 1').val('Produto ' + produto);
-        novaSecaoProduto.find('id="produto"').val('id=produto' + produto);
-  
-        // Adicione a nova seção de produto à seção com o ID "produtos"
-        $("#produtos").append(novaSecaoProduto);
-      });
-    });
-  });
-  </script>
-
   <script>
-    $(document).ready(function () {
-      $("#buscaCEP").click(function () {
-        var cep = $(this).val();
-
-        // Remove caracteres não numéricos do CEP
-        cep = cep.replace(/\D/g, '');
-
-        if (cep.length === 8) { // Verifica se o CEP possui 8 dígitos
-          var url = `https://viacep.com.br/ws/${cep}/json/`;
-
-          $.ajax({
-            url: url,
-            dataType: 'json',
-            success: function (data) {
-              if (!data.erro) {
-                // Preencha os campos com os dados da resposta
-                $("#inputEndereco").val(data.logradouro);
-                $("#inputBairro").val(data.bairro);
-                $("#inputMunicipio").val(data.localidade);
-                $("#inputEstado").val(data.uf);
-              } else {
-                alert('CEP não encontrado');
-              }
-            },
-            error: function () {
-              alert('Ocorreu um erro ao consultar o CEP');
-            }
-          });
-        }
-      });
+    document.addEventListener("DOMContentLoaded", function() {
+      // Obtém referências aos campos de entrada
+      var valorUnitarioInput = document.getElementById("valor_unitario");
+      var quantidadeEstoqueInput = document.getElementById("quantidade_estoque");
+      var valorTotalInput = document.getElementById("valor_total");
+    
+      // Adicione um evento de escuta apropriado, por exemplo, "input" para atualizar o valor total em tempo real.
+      valorUnitarioInput.addEventListener("input", calcularValorTotal);
+      quantidadeEstoqueInput.addEventListener("input", calcularValorTotal);
+    
+      // Função para calcular e atualizar o valor total
+      function calcularValorTotal() {
+        var valorUnitario = parseFloat(valorUnitarioInput.value) || 0;
+        var quantidadeEstoque = parseFloat(quantidadeEstoqueInput.value) || 0;
+    
+        // Realiza o cálculo do valor total
+        var valorTotal = valorUnitario * quantidadeEstoque;
+    
+        // Atualiza o campo "valor_total" com o valor calculado
+        valorTotalInput.value = valorTotal.toFixed(2); // Arredonda para 2 casas decimais
+      }
     });
-  </script>
+    </script>
+    
 </body>
 
 </html>

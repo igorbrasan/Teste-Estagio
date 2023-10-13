@@ -63,9 +63,6 @@
                     <label for="inputCEP">CEP</label>
                     <input   required type="text" class="form-control" id="inputCEP" placeholder="XX.XXX-XXX"
                       minlength="8" maxlength="8">
-                    <span class="input-group-btn">
-                      <button class="btn btn-success" type="button" id="buscaCEP">Buscar</button>
-                    </span>
                   </div>
                 </div>
               </div>
@@ -223,28 +220,63 @@
   </div>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      // Obtém referências aos campos de entrada
       var valorUnitarioInput = document.getElementById("valor_unitario");
       var quantidadeEstoqueInput = document.getElementById("quantidade_estoque");
       var valorTotalInput = document.getElementById("valor_total");
     
-      // Adicione um evento de escuta apropriado, por exemplo, "input" para atualizar o valor total em tempo real.
       valorUnitarioInput.addEventListener("input", calcularValorTotal);
       quantidadeEstoqueInput.addEventListener("input", calcularValorTotal);
-    
-      // Função para calcular e atualizar o valor total
+
       function calcularValorTotal() {
         var valorUnitario = parseFloat(valorUnitarioInput.value) || 0;
         var quantidadeEstoque = parseFloat(quantidadeEstoqueInput.value) || 0;
-    
-        // Realiza o cálculo do valor total
+
         var valorTotal = valorUnitario * quantidadeEstoque;
-    
-        // Atualiza o campo "valor_total" com o valor calculado
-        valorTotalInput.value = valorTotal.toFixed(2); // Arredonda para 2 casas decimais
+
+        valorTotalInput.value = valorTotal.toFixed(2); 
       }
     });
     </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Obtenha referências aos campos e adicione um evento de escuta ao campo "inputCEP"
+    var inputCEP = document.getElementById("inputCEP");
+    var inputEndereco = document.getElementById("inputEndereco");
+    var inputBairro = document.getElementById("inputBairro");
+    var inputMunicipio = document.getElementById("inputMunicipio");
+    var inputEstado = document.getElementById("inputEstado");
+  
+    inputCEP.addEventListener("blur", function() {
+      var cep = inputCEP.value.replace(/\D/g, ''); // Remove caracteres não numéricos do CEP
+  
+      if (cep.length === 8) { // Verifica se o CEP possui 8 dígitos
+        // Faz uma solicitação para a API ViaCEP
+        var url = `https://viacep.com.br/ws/${cep}/json/`;
+  
+        fetch(url)
+          .then(function(response) {
+            return response.json();
+          })
+          .then(function(data) {
+            if (!data.erro) {
+              // Preencha os campos com os dados da resposta
+              inputEndereco.value = data.logradouro;
+              inputBairro.value = data.bairro;
+              inputMunicipio.value = data.localidade;
+              inputEstado.value = data.uf;
+            } else {
+              alert('CEP não encontrado');
+            }
+          })
+          .catch(function(error) {
+            alert('Ocorreu um erro ao consultar o CEP');
+          });
+      }
+    });
+  });
+  </script>
+  
     
 </body>
 

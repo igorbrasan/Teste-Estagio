@@ -31,14 +31,14 @@
               <div class="form-group">
                 <div class="col-md-8 col-xs-12">
                   <label for="inputRazaoSocial">Razão Social</label>
-                  <input  true type="text" class="form-control" id="inputRazaoSocial" placeholder="Razão Social">
+                  <input   required type="text" class="form-control" id="inputRazaoSocial" placeholder="Razão Social">
                 </div>
               </div>
 
               <div class="form-group">
                 <div class="col-md-4 col-xs-12">
                   <label for="inputCnpj">CNPJ</label>
-                  <input  true type="text" class="form-control" id="inputCnpj" placeholder="XX.XXX.XXX/YYYY-ZZ"
+                  <input   required type="text" class="form-control" id="inputCnpj" placeholder="XX.XXX.XXX/YYYY-ZZ"
                     minlength="14" maxlength="14">
                 </div>
               </div>
@@ -46,7 +46,7 @@
               <div class="form-group">
                 <div class="col-md-8 col-xs-12">
                   <label for="inputNomeFantasia"> Nome Fantasia</label>
-                  <input  true type="text" class="form-control" id="inputNomeFantasia" placeholder="Nome Fantasia">
+                  <input   required type="text" class="form-control" id="inputNomeFantasia" placeholder="Nome Fantasia">
                 </div>
               </div>
 
@@ -61,7 +61,7 @@
                 <div class="col-md-6 col-xs-12">
                   <div class="input-group">
                     <label for="inputCEP">CEP</label>
-                    <input  true type="text" class="form-control" id="inputCEP" placeholder="XX.XXX-XXX"
+                    <input   required type="text" class="form-control" id="inputCEP" placeholder="XX.XXX-XXX"
                       minlength="8" maxlength="8">
                     <span class="input-group-btn">
                       <button class="btn btn-success" type="button" id="buscaCEP">Buscar</button>
@@ -81,7 +81,7 @@
               <div class="form-group">
                 <div class="col-md-8 col-xs-12">
                   <label for="inputEndereco">Endereço</label>
-                  <input accept="false" disabled  true type="text" class="form-control" id="inputEndereco"
+                  <input accept="false" disabled   required type="text" class="form-control" id="inputEndereco"
                     placeholder="Preenchido automaticamente pelo CEP">
                 </div>
               </div>
@@ -89,14 +89,14 @@
               <div class="form-group">
                 <div class="col-md-4 col-xs-12">
                   <label for="inputNumero">Número</label>
-                  <input  true type="text" class="form-control" id="inputNumero" placeholder="Número do imóvel">
+                  <input   required type="text" class="form-control" id="inputNumero" placeholder="Número do imóvel">
                 </div>
               </div>
 
               <div class="form-group">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <label for="inputComplemento">Complemento</label>
-                  <input  true type="text" class="form-control" id="inputComplemento"
+                  <input   required type="text" class="form-control" id="inputComplemento"
                     placeholder="Apartamento x, referência y...">
                 </div>
               </div>
@@ -125,7 +125,7 @@
               <div class="form-group">
                 <div class="col-md-6 col-xs-12">
                   <label for="inputNomeContato">Nome da pessoa de contato</label>
-                  <input  true type="text" class="form-control" id="inputNomeContato"
+                  <input   required type="text" class="form-control" id="inputNomeContato"
                     placeholder="Insira o Nome Completo">
                 </div>
               </div>
@@ -154,16 +154,19 @@
             <h3 class="panel-title">Produtos</h3>
           </div>
           <div class="panel-body">
-            <div class="form-group">
-              <label for="descricao">Descrição:</label>
-              <input type="text" class="form-control" id="descricao" name="descricao"  true>
-            </div>
 
             <span id="produtos">
-              <span id="produto">
+              <div class="well" id="produto"> 
+                <h4 class="card-title"> Produto 1</h4>
+
+            <div class="form-group">
+              <label for="descricao">Descrição:</label>
+              <input type="text" class="form-control" id="descricao" name="descricao"  required>
+            </div>
+
                 <div class="form-group">
                   <label for="unidade_medida">Unidade de Medida:</label>
-                  <select class="form-control" id="unidade_medida" name="unidade_medida"  true>
+                  <select class="form-control" id="unidade_medida" name="unidade_medida"   required>
                     <option value="unidade">Unidade</option>
                     <option value="kg">Quilograma</option>
                     <option value="litro">Litro</option>
@@ -172,19 +175,19 @@
 
                 <div class="form-group">
                   <label for="quantidade_estoque">Quantidade em Estoque:</label>
-                  <input type="number" class="form-control" id="quantidade_estoque" name="quantidade_estoque"  true>
+                  <input type="number" class="form-control" id="quantidade_estoque" name="quantidade_estoque"   required>
                 </div>
 
                 <div class="form-group">
                   <label for="valor_unitario">Valor Unitário:</label>
-                  <input type="number" class="form-control" id="valor_unitario" name="valor_unitario"  true>
+                  <input type="number" class="form-control" id="valor_unitario" name="valor_unitario"   required>
                 </div>
 
                 <div class="form-group">
                   <label for="valor_total">Valor Total:</label>
                   <input type="number" class="form-control" id="valor_total" name="valor_total" readonly>
                 </div>
-              </span>
+              </div>
             </span>
 
             <button id="adicionar-produto" class="btn btn-primary" data-load-file="produtos.html">Adicionar Produto</button>
@@ -222,7 +225,7 @@
 
 <script>
   $(document).ready(function() {
-    var produto = 0;
+    let produto = 0;
     $("#adicionar-produto").click(function() {
       var fileToLoad = $(this).data('load-file');
       produto = produto + 1;
@@ -235,6 +238,7 @@
         novaSecaoProduto.find('input[type="text"]').val('');
         novaSecaoProduto.find('select').val('');
         novaSecaoProduto.find('input[type="number"]').val('');
+        novaSecaoProduto.find('Produto 1').val('Produto ' + produto);
         novaSecaoProduto.find('id="produto"').val('id=produto' + produto);
   
         // Adicione a nova seção de produto à seção com o ID "produtos"

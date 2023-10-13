@@ -17,33 +17,3 @@ $(document).ready(function () {
         });
     });
 });
-
-$(document).ready(function () {
-    $("#buscaCEP").click(function () {
-        var cep = $(this).val();
-
-        cep = cep.replace(/\D/g, '');
-
-        if (cep.length === 8) { 
-            var url = `https://viacep.com.br/ws/${cep}/json/`;
-
-            $.ajax({
-                url: url,
-                dataType: 'json',
-                success: function (data) {
-                    if (!data.erro) {
-                        $("#inputEndereco").val(data.logradouro);
-                        $("#inputBairro").val(data.bairro);
-                        $("#inputMunicipio").val(data.localidade);
-                        $("#inputEstado").val(data.uf);
-                    } else {
-                        alert('CEP não encontrado');
-                    }
-                },
-                error: function () {
-                    alert('Ocorreu um erro ao consultar o CEP');
-                }
-            });
-        }
-    });
-});

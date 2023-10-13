@@ -8,11 +8,10 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="https://fluig.totvs.com/style-guide/css/fluig-style-guide.min.css">
-  <script src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="/portal/resources/js/mustache/mustache-min.js"></script>
-  <script src="/style-guide/js/fluig-style-guide.min.js"></script>
-  <script src="/portal/resources/js/jquery/jquery.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <script src="https://fluig.totvs.com/portal/resources/js/mustache/mustache-min.js"></script>
+  <script src="https://fluig.totvs.com/style-guide/js/fluig-style-guide.min.js"></script>
   <script src="/js/main.js"></script>
 
 <body>
@@ -240,7 +239,6 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-    // Obtenha referências aos campos e adicione um evento de escuta ao campo "inputCEP"
     var inputCEP = document.getElementById("inputCEP");
     var inputEndereco = document.getElementById("inputEndereco");
     var inputBairro = document.getElementById("inputBairro");
@@ -248,7 +246,7 @@
     var inputEstado = document.getElementById("inputEstado");
   
     inputCEP.addEventListener("blur", function() {
-      var cep = inputCEP.value.replace(/\D/g, ''); // Remove caracteres não numéricos do CEP
+      var cep = inputCEP.value.replace(/\D/g, ''); 
   
       if (cep.length === 8) { // Verifica se o CEP possui 8 dígitos
         // Faz uma solicitação para a API ViaCEP

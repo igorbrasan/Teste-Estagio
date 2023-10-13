@@ -170,9 +170,9 @@
           <div class="panel-body">
             <div class="row">
 
-              <div class="col-md-8 col-md-offset-3">
-                <div class="col-md-8 input-group">
-                  <label for="produto" class="col-sm-2 control-label">Produto</label>
+              <span id="tabela-produtos">
+                <div class="col-md-8">
+                  <label for="produto" class="col-sm-2 control-label">Produto - #</label>
                   <input required type="text" class="form-control" id="produto">
                 </div>
                 
@@ -202,8 +202,8 @@
                   <input type="email" class="form-control" id="valorTotal">
                 </div>
               </div>
-              
-            </div>
+            </span>
+
               <table id="tabela-produtos">
                 <thead>
                   <tr>
@@ -258,10 +258,11 @@
       </div>
     </form>
   </div>
+
   <script>
     $("#adicionar-produto").click(function () {
       // Clona a última linha da tabela e limpa os campos
-      var novaLinha = $("#tabela-produtos tr:last").clone();
+      var novaLinha = $("#tabela-produtos").clone();
       novaLinha.find("input").val(""); // Limpa os campos
       $("#tabela-produtos").append(novaLinha); // Adiciona a nova linha à tabela
     });

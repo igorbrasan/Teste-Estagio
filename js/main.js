@@ -17,3 +17,20 @@ $(document).ready(function () {
         });
     });
 });
+
+
+$(document).ready(function() {
+  $("#finalizar").click(function() {
+    var formData = {};
+    var formSelector = "#meuFormulario";
+    $(formSelector).find("input, select, textarea").each(function() {
+      var campo = $(this);
+      var nomeCampo = campo.attr("name");
+      var valorCampo = campo.val();
+      formData[nomeCampo] = valorCampo;
+    });
+    var jsonString = JSON.stringify(formData);
+    console.log(jsonString);
+  });
+});
+
